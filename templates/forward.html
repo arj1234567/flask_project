@@ -1,0 +1,44 @@
+<html>
+    <script src="/static/jquery-1.8.3.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#name").change(function(){
+                var name = $('#name').val();
+
+                $.ajax({
+                    url:"{{url_for('getforward')}}",
+                    data:{'forward':name},
+                    success:function(data){
+                        if (data.valid != "exist"){
+                            alert("reciever name not exist")
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+    <body>
+        <form method="post" action="{{url_for('forwardAction')}}">
+        <table>
+            <tr>
+                <th>Recieptant Name</th>    
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            {% for i in forward %}
+            <tr>
+                <th>Subject</th>
+                <td><input type="text" name="subject" value="{{i.Subject}}"></td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td><textarea name="message" cols="20" rows="5">{{i.Message}}</textarea></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="forward"></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </form>
+    </body>
+</html>

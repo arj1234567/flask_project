@@ -1,0 +1,31 @@
+<html>
+    <body>
+        <form method="post" action="{{url_for('move_to_trash')}}">
+        <table>
+            <tr>
+                <th>Sender</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+            {% for i in rec %}
+            <tr>
+                <td>{{i.Username}}</td>
+                <td>{{i.Subject}}</td>
+                <td>{{i.Message}}</td>
+                <td>{{i.Date}}</td>
+                <td>{{i.Time}}</td>
+                <td><input type="checkbox" name="trash" value="{{i.id}}"></td>
+                <td><a href="{{url_for('reply',data=i.id)}}">Reply</a></td>
+                <td><a href="{{url_for('forward',data=i.id)}}">Forward</a></td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td><input type="submit" value="move to trash" ></td>
+            </tr>
+            
+        </table>
+    </form>
+    </body>
+</html>

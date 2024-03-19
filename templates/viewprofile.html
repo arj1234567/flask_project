@@ -1,0 +1,42 @@
+<html>
+    <body>
+        <form method="post" action="{{url_for('updateAction')}}">
+        <table>
+            {% for i in prof %}
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="name" value="{{i.Name}}"></td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td><input type="text" name="age" value="{{i.Age}}"></td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>
+                    {% if i.Gender == 'female' %}
+                    <input type ="radio" name="gender" value="female" checked="true" >female
+                    <input type="radio" name="gender" value = "male" >male
+                    {% else %}
+                    <input type ="radio" name="gender" value="male" checked="true">male
+                    <input type="radio" name="gender" value = "female">female
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td><input type="text" name="country" value="{{i.Country}}"></td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td><input type="text" name="username" value="{{i.Username}}"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="update"></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </form>
+    </body>
+</html>

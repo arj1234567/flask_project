@@ -1,0 +1,41 @@
+<html>
+    <body>
+        <script src="/static/jquery-1.8.3.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#reciever_name').change(function(){
+                    var reciever = $('#reciever_name').val();
+                    $.ajax({
+                        url:"{{url_for('getreciever')}}",
+                        data:{'rec':reciever},
+                        success:function(data){
+                            if (data.valid != "exist"){
+                                alert("reciever name not exist")
+                            }
+                        }
+                    })
+                })
+            })
+        </script>
+        <form method="post" action="{{url_for('send_mailAction')}}">
+        <table>
+            <tr>
+                <th>Reciever Name</th>
+                <td><input type="text" name="reciever_name" id="reciever_name"></td>
+            </tr>
+            <tr>
+                <th>Subject</th>
+                <td><input type="text" name="subject"></td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td><textarea name="message" rows="5" cols="20"></textarea></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="send mail"></td>
+            </tr>
+        </table>
+    </form>
+    </body>
+</html>

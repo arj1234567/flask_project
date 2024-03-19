@@ -1,0 +1,18 @@
+Welcome
+<html>
+    <body>
+        <li><a href="{{url_for('send_mail')}}">Send Mail</a></li>
+        <li><a href="{{url_for('view_msg')}}">Send Box</a></li>
+        <li><a href="{{url_for('recieved_msg')}}">Inbox</a></li>
+        <li><a href="{{url_for('view_trash')}}">Trash</a></li>
+        <li><a href="{{url_for('viewprofile')}}">View Profile</a></li>
+        <li><a href="{{url_for('logout')}}">Log Out</a></li>
+    </body>
+</html>
+{% if get_flashed_messages() %}
+{% for msg in get_flashed_messages() %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endfor %}
+{% endif %}

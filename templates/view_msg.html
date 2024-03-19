@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <table>
+            <tr>
+                <th>Reciever Name</th>
+                <th>Message</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+            {% for i in msg %}
+            <tr>
+                <td>{{i.Username}}</td>
+                <td>{{i.Message}}</td>
+                <td>{{i.Subject}}</td>
+                <td>{{i.Date}}</td>
+                <td>{{i.Time}}</td>
+                <td><a href="{{url_for('delete_msg', data=i.id)}}"> Delete</a></li>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </body>
+</html>

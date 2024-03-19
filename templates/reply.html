@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <form method="post" action="{{url_for('replyAction')}}">
+        <table>
+            {% for i in reply%}
+            <tr>
+                <th>Recieptent Name</th>
+                <td><input type="text" name="name" value={{i.Username}}></td>
+            </tr>
+            <tr>
+                <th>Subject</th>
+                <td><input type="text" name="subject"></td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td><textarea name="message" rows="5" cols="20"></textarea></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="reply"></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+    </body>
+</html>
